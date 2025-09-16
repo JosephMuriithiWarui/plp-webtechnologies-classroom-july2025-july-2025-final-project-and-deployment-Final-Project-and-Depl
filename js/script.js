@@ -1,26 +1,13 @@
-// Mobile Menu Toggle with Outside Click Close
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menu-toggle");
-  const navMenu = document.querySelector("nav ul");
+ const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+    const navLinks = nav.querySelectorAll("a");
 
-  // Toggle menu on hamburger click
-  menuToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent triggering outside click
-    navMenu.classList.toggle("show");
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (navMenu.classList.contains("show") && !navMenu.contains(e.target) && e.target !== menuToggle) {
-      navMenu.classList.remove("show");
-    }
-  });
-
-  // Close menu when clicking a nav link
-  navMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("show");
+    // Toggle nav open/close
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("open");
     });
-  });
-});
 
+    // Close nav when clicking a link
+    navLinks.addEventListener("click", ()  => {
+        nav.classList.remove("open");
+    });
